@@ -1,14 +1,14 @@
 # Technical Challenge 1: Playlist Management with a Singly
 # Linked List.
-# Scenario: You’re tasked with developing the back-end for 
+# Scenario: You’re tasked with developing the back-end for
 # a music app’s playlist feature. The app should allow
-# users to add songs to the end of their playlist and skip to 
-# the next song. 
-# Task: Implement a singly linked list to manage the songs in 
-# a user’s playlist. The list should support adding songs to the 
+# users to add songs to the end of their playlist and skip to
+# the next song.
+# Task: Implement a singly linked list to manage the songs in
+# a user’s playlist. The list should support adding songs to the
 # end and retrieving the next song to play.
-# Operations to be performed on the playlist, such as “add song” 
-# and “play next”. 
+# Operations to be performed on the playlist, such as “add song”
+# and “play next”.
 # Author: Adriel Ildefonso
 # Created: 07/30/2025
 
@@ -17,10 +17,12 @@ import os
 
 json_file = "playlist.json"
 
+
 class Songs:
     def __init__(self, song_title):
         self.song_title = song_title
         self.next = None
+
 
 class Playlist:
     def __init__(self):
@@ -29,14 +31,14 @@ class Playlist:
 
     def add_song(self, song_title):
         new_song = Songs(song_title)
-        if not self.current: # Empty playlist
+        if not self.current:  # Empty playlist
             self.current = self.last = new_song
         else:
             self.last.next = new_song
             self.last = new_song
         self.save_to_json()
         print(f"\n ✅ Added Song: {song_title} \n")
-    
+
     def play_next(self):
         if not self.current:
             print(" \n 🛑 No songs left. \n")
@@ -48,7 +50,7 @@ class Playlist:
         self.save_to_json()
         print(f"\n ▶️ Now playing: {next_song} \n")
         return next_song
-        
+
     def traverse(self):
         if not self.current:
             print("\n ⛔️ Playlist empty \n")
@@ -79,8 +81,8 @@ class Playlist:
                     for title in song_titles:
                         self.add_song(title)
                 except json.JSONDecodeError:
-                    print("Error Reading 'playlist.json'. " \
-                    "Starting with an empty playlist")
+                    print("Error Reading 'playlist.json'. "
+                        "Starting with an empty playlist")
 
 
 # Main Program:
@@ -111,4 +113,3 @@ while True:
         break
     else:
         print("\n ❌ Option not valid. \n")
-
