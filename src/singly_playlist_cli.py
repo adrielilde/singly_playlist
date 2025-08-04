@@ -82,7 +82,7 @@ class Playlist:
                         self.add_song(title)
                 except json.JSONDecodeError:
                     print("Error Reading 'playlist.json'. "
-                            "Starting with an empty playlist")
+                          "Starting with an empty playlist")
 
 
 # Main Program:
